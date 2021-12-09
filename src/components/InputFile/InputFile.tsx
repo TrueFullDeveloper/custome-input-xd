@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { getFileNameList } from "utils/getFileNameList";
-import { getFormDataList } from "utils/getFormDataList";
 
 import DeleteFileIcon from "static/images/inputFile/delete_file_icon.svg";
 import FileIcon from "static/images/inputFile/file_icon.svg";
@@ -18,7 +17,7 @@ import {
 interface InputFileProps extends React.InputHTMLAttributes<HTMLInputElement> {
   width: number;
   placeholder: string;
-  onInputFileChange?: (fileList: Array<FormData>) => void;
+  onInputFileChange?: (fileList: Array<File>) => void;
 }
 
 let dragCounter = 0;
@@ -47,7 +46,7 @@ const InputFile: React.FC<InputFileProps> = ({
       setFileList([...fileList, ...fileListTemp]);
 
       if (onInputFileChange) {
-        onInputFileChange(getFormDataList([...fileList, ...fileListTemp]));
+        onInputFileChange([...fileList, ...fileListTemp]);
       }
     }
   };
@@ -99,15 +98,14 @@ const InputFile: React.FC<InputFileProps> = ({
   };
 
   return (
-    <InputFileContainer>
+    <InputFileContainer width={width}>
       <FileInput
         type={"file"}
         ref={fileInputRef}
-        accept=".jpg, .jpeg, .png, .gif, .bmp, .doc, .docx, .xls, .xlsx, .txt, .tar, .zip, .7z, .7zip, .pdf"
+        accept=".txt"
         onChange={(event) => onFileAdd(event.target.files)}
         id={id}
         name={name}
-        multiple
       />
 
       <InputFileField

@@ -57,3 +57,24 @@ export const TextContainer = styled.span`
     animation: ${CursorAnimation} 1s ease-out infinite;
   }
 `;
+
+export const Link = styled.a`
+  display: block;
+  max-width: max-content;
+  margin-left: 20px;
+
+  padding: 11px 40px;
+  background: #025c03;
+  border-radius: 15px;
+
+  font-size: 28px;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+`;
+
+export const Container = styled.div`
+  display: flex;
+  align-content: center;
+  margin-top: 25px;
+`;

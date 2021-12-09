@@ -28,8 +28,9 @@ export const InputFileField = styled(InputFileFieldBase)<{
   width: ${({ width }) => `${width}px`};
 `;
 
-export const InputFileContainer = styled.div`
+export const InputFileContainer = styled.div<{ width: number }>`
   position: relative;
+  width: ${({ width }) => `${width}px`};
 
   &:hover {
     ${InputFileField} {
