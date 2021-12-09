@@ -46,6 +46,8 @@ export const actionKeysHandler = ({
     });
   } else if (keyCode === 37) {
     // Left Arrow Key
+    if (cursorIndex === 0) return str;
+
     return addCursorToStr({
       strPosition: cursorIndex - 1,
     });
@@ -56,6 +58,8 @@ export const actionKeysHandler = ({
     });
   } else if (keyCode === 39) {
     // Right Arrow Key
+    if (cursorIndex === str.length - 1) return str;
+
     return addCursorToStr({
       strPosition: cursorIndex + 1,
     });
