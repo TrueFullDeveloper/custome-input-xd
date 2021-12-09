@@ -1,7 +1,8 @@
+import Editor from "pages/Editor";
 import React from "react";
 
 const App: React.FC = () => {
-  return <></>;
+  return <Editor />;
 };
 
 export default App;
