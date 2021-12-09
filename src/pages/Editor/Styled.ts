@@ -5,11 +5,30 @@ export const EditorContainer = styled.div`
   justify-content: center;
   align-content: center;
 
+  padding-top: 20px;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 20px);
 
   overflow: hidden;
+  background: #f2d09e;
+`;
 
-  //box-sizing: border-box;
-  //border: 10px solid red;
+export const TitleSection = styled.span`
+  display: flex;
+  align-content: center;
+
+  margin-bottom: 10px;
+
+  font-size: 48px;
+  line-height: 54px;
+  color: rgba(0, 0, 0, 0.89);
+
+  > img {
+    display: block;
+
+    width: 48px;
+    height: 48px;
+
+    margin-right: 8px;
+  }
 `;

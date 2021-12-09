@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { getPxString } from "utils/getPxString";
-import { makeTextStyles } from "utils/makeTextStyles";
 
 export const FileInput = styled.input`
   display: none;
@@ -27,7 +25,7 @@ export const InputFileField = styled(InputFileFieldBase)<{
 }>`
   cursor: pointer;
   border: 1px dashed ${({ fileIsDrag }) => (fileIsDrag ? "#bababa" : "#e1e1ec")};
-  width: ${({ width }) => getPxString(width)};
+  width: ${({ width }) => `${width}px`};
 `;
 
 export const InputFileContainer = styled.div`
@@ -47,7 +45,8 @@ export const FileItem = styled.span`
   margin-bottom: 6px;
   margin-left: 12px;
 
-  ${makeTextStyles("15px", 500)};
+  font-size: 15px;
+  font-weight: 500;
   line-height: 20px;
   color: #0e0f0f;
 
@@ -76,7 +75,8 @@ const FileTitleSpanBase = styled.span`
   display: block;
   margin-left: 12px;
 
-  ${makeTextStyles("13px", 500)};
+  font-size: 13px;
+  font-weight: 500;
   line-height: 16px;
   color: #757575;
 `;

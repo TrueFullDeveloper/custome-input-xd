@@ -1,9 +1,10 @@
-import { CustomInputContainer } from "components/CustomInput/Styled";
 import { CURSOR, ACTION_KEY_LIST, KEYBOARD_LIST } from "config/config";
 import React, { useCallback, useEffect, useState } from "react";
 import { actionKeysHandler } from "utils/actionKeysHandler";
 import { getAddStrByPositionFunc } from "utils/getAddStrByPositionFunc";
 import { getLineList } from "utils/getLineList";
+
+import { CustomInputContainer, TextContainer } from "./Styled";
 
 const CustomInput: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>(CURSOR);
@@ -37,9 +38,25 @@ const CustomInput: React.FC = () => {
 
   return (
     <CustomInputContainer>
-      {getLineList({ str: inputValue }).map((strItem) => (
-        <div>{strItem}</div>
-      ))}
+      {getLineList({ str: inputValue }).map((strItem, strIndex) => {
+        if (strItem.indexOf(CURSOR) !== -1) {
+          return (
+            <TextContainer key={strIndex}>
+              {strItem.split("").map((charItem) => {
+                if (charItem === CURSOR) return <label>{charItem}</label>;
+
+                return <span>{charItem}</span>;
+              })}
+            </TextContainer>
+          );
+        }
+
+        return (
+          <TextContainer key={strIndex}>
+            <span>{strItem}</span>
+          </TextContainer>
+        );
+      })}
     </CustomInputContainer>
   );
 };
